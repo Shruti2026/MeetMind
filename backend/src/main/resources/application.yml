@@ -17,6 +17,11 @@ spring:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+
 server:
   port: 8080
 
@@ -32,3 +37,6 @@ springdoc:
 
 gemini:
   api-key: ${GEMINI_API_KEY:}
+
+openai:
+  api-key: ${OPENAI_API_KEY:}

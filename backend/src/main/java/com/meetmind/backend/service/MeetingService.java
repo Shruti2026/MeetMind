@@ -61,7 +61,7 @@ public class MeetingService {
         meetingRepository.delete(meeting);
     }
 
-    private Meeting findOwnedMeeting(Long id) {
+    public Meeting findOwnedMeeting(Long id) {
         Meeting meeting = meetingRepository.findById(id)
                 .orElseThrow(() -> new MeetingNotFoundException(id));
 
