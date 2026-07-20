@@ -1,9 +1,11 @@
 package com.meetmind.backend.controller;
 
+import com.meetmind.backend.dto.SummaryResponse;
 import com.meetmind.backend.dto.TranscriptRequest;
 import com.meetmind.backend.dto.TranscriptResponse;
 import com.meetmind.backend.entity.Meeting;
 import com.meetmind.backend.entity.Transcript;
+import com.meetmind.backend.service.MeetingProcessingService;
 import com.meetmind.backend.service.MeetingService;
 import com.meetmind.backend.service.TranscriptService;
 import jakarta.validation.Valid;
@@ -19,6 +21,7 @@ public class TranscriptController {
 
     private final MeetingService meetingService;
     private final TranscriptService transcriptService;
+    private final MeetingProcessingService meetingProcessingService;
 
     @PostMapping("/transcript")
     public ResponseEntity<TranscriptResponse> saveTextTranscript(
@@ -36,5 +39,10 @@ public class TranscriptController {
         Meeting meeting = meetingService.findOwnedMeeting(meetingId);
         Transcript transcript = transcriptService.saveAudioTranscript(meeting, file);
         return ResponseEntity.ok(TranscriptResponse.fromEntity(transcript));
+    }
+
+    @PostMapping("/process")
+    public ResponseEntity<SummaryResponse> processMeeting(@PathVariable Long meetingId) {
+        return ResponseEntity.ok(meetingProcessingService.processMeeting(meetingId));
     }
 }
