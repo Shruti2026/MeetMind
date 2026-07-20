@@ -30,6 +30,11 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.UNAUTHORIZED, "Invalid email or password", null);
     }
 
+    @ExceptionHandler(AiProcessingException.class)
+    public ResponseEntity<ErrorResponse> handleAiProcessing(AiProcessingException ex) {
+        return buildResponse(HttpStatus.BAD_GATEWAY, ex.getMessage(), null);
+    }
+
     @ExceptionHandler(MeetingNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleMeetingNotFound(MeetingNotFoundException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), null);
