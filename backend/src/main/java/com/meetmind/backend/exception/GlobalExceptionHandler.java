@@ -35,6 +35,11 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_GATEWAY, ex.getMessage(), null);
     }
 
+    @ExceptionHandler(SummaryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleSummaryNotFound(SummaryNotFoundException ex) {
+        return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), null);
+    }
+
     @ExceptionHandler(TranscriptNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleTranscriptNotFound(TranscriptNotFoundException ex) {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), null);

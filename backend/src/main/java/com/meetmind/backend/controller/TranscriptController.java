@@ -45,4 +45,9 @@ public class TranscriptController {
     public ResponseEntity<SummaryResponse> processMeeting(@PathVariable Long meetingId) {
         return ResponseEntity.ok(meetingProcessingService.processMeeting(meetingId));
     }
+
+    @GetMapping("/summary")
+    public ResponseEntity<SummaryResponse> getSummary(@PathVariable Long meetingId) {
+        return ResponseEntity.ok(meetingProcessingService.getSummary(meetingId));
+    }
 }

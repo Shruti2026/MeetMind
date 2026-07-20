@@ -25,6 +25,14 @@ public class MeetingProcessingService {
     private final SummaryRepository summaryRepository;
     private final MeetingRepository meetingRepository;
 
+    public SummaryResponse getSummary(Long meetingId) {
+        Meeting meeting = meetingService.findOwnedMeeting(meetingId);
+        if (meeting.getSummary() == null) {
+            throw new com.meetmind.backend.exception.SummaryNotFoundException();
+        }
+        return SummaryResponse.fromEntity(meeting.getSummary());
+    }
+
     @Transactional
     public SummaryResponse processMeeting(Long meetingId) {
         Meeting meeting = meetingService.findOwnedMeeting(meetingId);
