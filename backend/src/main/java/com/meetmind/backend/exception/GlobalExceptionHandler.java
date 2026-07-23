@@ -35,6 +35,11 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_GATEWAY, ex.getMessage(), null);
     }
 
+    @ExceptionHandler(TaskNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleTaskNotFound(TaskNotFoundException ex) {
+        return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), null);
+    }
+
     @ExceptionHandler(SummaryNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleSummaryNotFound(SummaryNotFoundException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), null);
