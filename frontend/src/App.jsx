@@ -5,6 +5,7 @@ import Register from './pages/Register.jsx'
 import MeetingList from './pages/MeetingList.jsx'
 import MeetingForm from './pages/MeetingForm.jsx'
 import MeetingDetail from './pages/MeetingDetail.jsx'
+import TaskList from './pages/TaskList.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function App() {
@@ -49,6 +50,14 @@ function App() {
         element={
           <ProtectedRoute>
             <MeetingForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tasks"
+        element={
+          <ProtectedRoute>
+            <TaskList />
           </ProtectedRoute>
         }
       />
