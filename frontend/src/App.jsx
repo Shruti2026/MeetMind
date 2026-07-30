@@ -6,6 +6,7 @@ import MeetingList from './pages/MeetingList.jsx'
 import MeetingForm from './pages/MeetingForm.jsx'
 import MeetingDetail from './pages/MeetingDetail.jsx'
 import TaskList from './pages/TaskList.jsx'
+import NotFound from './pages/NotFound.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
