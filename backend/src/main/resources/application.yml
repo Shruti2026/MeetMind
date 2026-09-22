@@ -4,8 +4,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:meetmind}
-    username: ${DB_USERNAME:meetmind}
-    password: ${DB_PASSWORD:meetmind}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:2026}
     driver-class-name: org.postgresql.Driver
 
   jpa:
